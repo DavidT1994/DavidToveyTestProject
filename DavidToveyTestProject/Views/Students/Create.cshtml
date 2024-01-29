@@ -1,0 +1,52 @@
+﻿@model DavidToveyTestProject.Models.Students
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Students</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dob" class="control-label"></label>
+                <input asp-for="Dob"  class="form-control" />
+                <span asp-validation-for="Dob" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YearOfStudy" class="control-label"></label><br/>
+                <label for="firstyear" class="control-label">1st year</label>
+                @Html.RadioButtonFor(model => model.YearOfStudy, "1st year", new{id="firstyear"})<br />
+                <label for="secondyear" class="control-label">2nd year</label>
+                @Html.RadioButtonFor(model => model.YearOfStudy, "2nd year", new {id="secondyear"})<br />
+                <label for="thirdyear" class="control-label">3rd year</label>
+                @Html.RadioButtonFor(model => model.YearOfStudy, "3rd year", new {id="thirdyear"})
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
